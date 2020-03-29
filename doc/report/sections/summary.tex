@@ -5,7 +5,7 @@
 \section{Summary}
 A sequence of random variables $X = (X_1, \ldots, X_k) \in \bbR^k_+$ is said to be neutral-to-the-left (NTL) if the increments 
 \begin{equation*}
-R_j = \frac{X_j}{\sum_{i=1}^j X_i}
+R_j = \frac{X_j}{\sum_{i=1}^j X_i}, \quad j=1, \ldots, k
 \end{equation*} 
 form a sequence of mutually independent random variables in $[0, 1]$ \cite{bloem2018sampling}. Such processes are common in statistics and can be used to describe, for instance, the generating process of left censored data or the asymptotic degree distribution in preferential attachment random graphs \cite{bloem2017preferential}. In the statistics and probability literature and, especially, in Bayesian nonparametrics, NTL processes have not received as much attention as their analogous counterpart, neutral-to-the-right (NTR) processes \footnote{Reversing an NTL process gives an NTR process.}. The disparity in the development of theory for NTL and NTR processes can be attributed to two factors:
 
@@ -14,16 +14,8 @@ form a sequence of mutually independent random variables in $[0, 1]$ \cite{bloem
 	\item Since NTL and NTR are symmetric opposites \cite{bloem2018sampling}, an NTL process can be transformed into an NTR for the analysis and back to an NTL after the analysis.
 \end{enumerate}
 
+However, the increased attention received by the study of random graphs as well as the interest to model streaming data has made NTL processes more popular and highlighted the need to develop a theory for NTL processes. In fact, the approach used so far in the study of NTL processes is cannot be applied to situations where data is collected in a streaming fashion. Transforming and NTL into an NTR process requires knowledge of the full dataset hence, analysis of NTL processes of streaming data cannot be performed with the current approach.
 
-However, the increased attention received by the study of random graphs as well as the increased has made NTL processes more popular and highlighted the need to develop a theory for NTL processes. In fact, while the approach used so far in the study of NTL processes is valid for situations where 
+To overcome this issue and expand existing literature on NTL processes, we present here the spatial neutral-to-the-left (SPNTL) stochastic process. SPNTL enables direct Bayesian modeling of NTL data and can be used as prior for Bayesian nonparametric models. In this paper, following the theoretical analysis of \cite{james2006poisson} for spatial neutral-to-the-right (SPNTR) processes, we derive a characterization of the posterior distribution of SPNTL using results from Poisson partition calculus \cite{james2005poisson}.
 
-Neutral-to-the-left (NTL) stochastic processes are a class of stochastic processes used to 
-
-
-Neutral-to-the-right (NTR) stochastic processes \cite{doksum1974tailfree} were introduced as priors for Bayesian nonparametrics models of right censored data (e.g survival analysis). In Bayesian statistics, using priors specifically designed for the problem at hand is renowned to be beneficial for effective inference. Hence, having the possibility to improve the descriptiveness of models for right censored data using NTR priors should be seen as a great advantage. However, \cite{james2006poisson} noticed that, despite the numerous applications suitable for NTR priors, these processes were not being used as extensively as they could have been. The Dirichlet process constituted the only exception and it is still ubiquitously used in Bayesian nonparametrics applications. \cite{james2006poisson} identified several reasons for the absence of NTR priors from the Bayesian nonparametrics literature and addressed them in his work.
-
-Firstly, he noticed that the NTR process of \cite{doksum1974tailfree} was defined only on the real line, $\bbR$, therefore restricting its application to processes in the real space. Hence, NTR processes could not be applied to situations where inference on more complex spaces was required. To address this limitation, \cite{james2006poisson} proposed the spatial neutral-to-the-right process (SPNTR), an extension of NTR processes to arbitrary Polish spaces. 
-
-Secondly, and probably the most important problem addressed in \cite{james2006poisson}, is that NTR processes are, in general, not tractable and there is no simple way to sample from them. On the other hand, Dirichlet processes can easily be sampled through the Chinese restaurant process. Therefore, \cite{james2006poisson} derives a similar sampling scheme for NTR processes, making their implementation more approachable.
-
-Lastly, to address the issues above, \cite{james2006poisson} used results from Poisson partition calculus \cite{james2005poisson}. Although the results from Poisson calculus come from a previous work \cite{james2005poisson}, the approach greatly simplified proofs and allows for a relatively simple generalization of NTR processes. Approaches used in literature prior to this work derived sampling distributions for Dirichlet processes using combinatorial arguments \cite{antoniak1974mixtures,pitman2002combinatorial}. Adopting a similar strategy in generalizing NTR processes would result challenging and would likely not be viable. 
+While the results in our paper are important to develop a theory for NTL processes, our work does not cover all theoretical contributions of \cite{james2006poisson} for the setting of NTL processes. Deriving additional results for SPNTL is left as future work and discussed more in detail in \Cref{proposals} together with possible applications. 

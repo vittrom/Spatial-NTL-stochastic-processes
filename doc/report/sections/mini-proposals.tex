@@ -2,10 +2,22 @@
 
 % Mini-proposals section
 
-\section{Mini-proposals}
+\section{Mini-proposals}  \label{proposals}
 
 % each mini-proposal gets its own subsection
-\subsection{Proposal 1: MY PROPOSAL TITLE} % enter your proposal title
+\subsection{Proposal 1: NTL species sampling and generalized Chinese restaurant process} % enter your proposal title
+
+The work of \cite{james2006poisson}, that guided our analysis, was motivated by the observation that despite the numerous applications suitable for NTR priors, NTR processes were not being used as extensively as they could have been. The Dirichlet process constituted the only exception and it is still ubiquitously used in Bayesian nonparametrics applications. 
+
+\cite{james2006poisson} identified several reasons for the absence of NTR priors from the Bayesian nonparametrics literature and addressed them in his work.
+
+Firstly, he noticed that the NTR process of \cite{doksum1974tailfree} was defined only on the real line, $\bbR$, therefore restricting its application to processes in the real space. Hence, NTR processes could not be applied to situations where inference on more complex spaces was required. To address this limitation, \cite{james2006poisson} proposed the spatial neutral-to-the-right process (SPNTR), an extension of NTR processes to arbitrary Polish spaces. From SPNTR, \cite{james2006poisson} derived a new class of random probability measures called NTR species sampling models. This work focuses on characterizing SPNTL processes similarly to \cite{james2006poisson}, however, the possibility to derive analogous NTL species sampling models is not explored and could be further investigated following the analysis of \cite{james2006poisson}.
+
+Secondly, and probably the most important problem addressed in \cite{james2006poisson}, is that NTR processes are, in general, not tractable and there is no simple way to sample from them, limiting their practical application. On the other hand, Dirichlet processes can easily be sampled through the Chinese restaurant process. \cite{james2006poisson} derives a generalized Chinese restaurant process sampling scheme for SPNTR processes, making their implementation more approachable. Our work has not developed a similar sampling scheme for SPNTL.
+
+We believe that exploring the two research directions presented in this proposal is essential to make SPNTL processes available for practical use. The analysis could be performed following the work of \cite{james2006poisson} and can bring forward the theoretical development of NTL processes.
+
+
 
 
 % each mini-proposal gets its own subsection
