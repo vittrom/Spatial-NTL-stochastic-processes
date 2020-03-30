@@ -4,6 +4,119 @@
 
 \section{Project report}\label{project_report}
 
+In this section we follow the analysis of \cite{james2006poisson} to derive a posterior distribution for the SPNTL process. In \Cref{NTL_definition} we give a rigorous definition of a NTL process and derive a formula of the random distribution function in terms of a stochastic process, similarly to Thm. 3.1 of \cite{doksum1974tailfree}. \Cref{CBM} introduces the cumulative birth measure, the random measure we will use to specify a SPNTL process. \Cref{SPNTL_process} outlines the SPNTL process and in \Cref{SPNTL_posterior} we detail the posterior analysis and derive the main result of the paper using results from Poisson partition calculus \cite{james2005poisson,james2006poisson}.
+
+\subsection{Neutral to the left stochastic process}\label{NTL_definition}
+The Bayesian analysis of SPNTL is based on NTL stochastic processes. \cite{doksum1974tailfree} provides a framework to analyse NTR processes and characterize the random distribution function in terms of a Levy process. The NTR characterization, as well as the relation between the random distribution function and a Levy process is essential to obtain the results in \cite{james2006poisson}. Therefore, we give here a similar characterization for NTL processes as this will aid the posterior analysis of SPNTL.
+
+Given a sequence of random variables $X = (X_1, \ldots, X_k)$, we say that $X$ is NTL if the increments form a sequence, $R$, of mutually independent random variables in $[0, 1]$ \cite{bloem2018sampling}, that is
+
+\begin{equation*}
+R = \left(1, \frac{X_2}{X_1 + X_2}, \ldots, \frac{X_j}{\sum_{i=1}^j X_i}, \ldots, \frac{X_k}{\sum_{i=1}^k X_i}\right)
+\end{equation*}
+is a vector of mutually independent random variables on $[0,1]$. Let $V_1, \ldots, V_k$ be nonnegative independent random variables in $[0, 1]$ then $R$ can be defined as
+\begin{equation*}
+R = \left(1, V_2, \ldots, V_k\right)
+\end{equation*}
+and 
+\begin{equation}\label{increments_v}
+\begin{split}
+\left(1, \frac{X_2}{X_1 + X_2}, \ldots, \frac{X_j}{\sum_{i=1}^j X_i}, \ldots, \frac{X_k}{\sum_{i=1}^k X_i}\right) =_d \left(1, V_2, \ldots,V_j, \ldots, V_k\right)
+\end{split}
+\end{equation}
+where $=_d$ indicates equality in distribution a.s. From \Cref{increments_v} it is possible to derive the distribution of $X$ in terms of $V = (V_1, \ldots, V_k)$ as an "inverse" stick-breaking process like in \cite{bloem2017preferential}.
+\begin{equation*}
+\begin{split}
+(X_1, X_2, \ldots,X_j, \ldots X_k) &=_d \left(\prod_{i=2}^k(1-V_i), V_2\prod_{i=3}^k(1-V_i), \ldots, V_j\prod_{i=j+1}^k(1-V_i), \ldots, V_k\right)
+\end{split}
+\end{equation*}
+where we set $V_1 = 1$.
+
+The increments in \Cref{increments_v} can be written equivalently in terms of a random distribution function $F$ corresponding to a random probability $P$ such that $F(t) = P([-\infty, t]) \in [0, 1]$ for $t \in \bbR_{+}$. The random distribution function is a stochastic process that satisfies
+
+\begin{enumerate}
+	\item $F$ is a.s. non-decreasing
+	\item $\lim_{t \rightarrow - \infty} F(t) = 0$ a.s., $\lim_{t \rightarrow \infty} F(t) = 1$ a.s, and
+	\item $\lim_{s \rightarrow t^+} F(s) = F(t)$ for each $t \in \bbR_{+}$
+\end{enumerate}
+as stated in \cite{doksum1974tailfree}.
+
+The increments in \Cref{increments_v} can be rewritten in terms of the stochastic process $F$ as
+
+\begin{equation}\label{increments_NTL_F}
+\left(\frac{F(t_1)}{F(t_1)}, \frac{F(t_2) - F(t_1)}{F(t_2)}, \ldots, \frac{F(t_k) - F(t_{k-1})}{F(t_{k})} \right) =_d \left(1, V_2, \ldots, V_k\right)
+\end{equation}
+for $0 < t_1 < t_2 < \ldots < t_k < \infty$. The random distribution $F$ is essentially a random cumulative density function (CDF) and its stochastic process corresponds to a special type of Levy process called \textit{subordinator} \cite{orbanz2012lecture}. 
+
+\paragraph{Levy process} \cite{papapantoleon2008introduction} A stochastic process $Z = \{Z(t) : t \in \bbR_+\}$ is said to be a Levy process if it satisfies the following properties:
+	\begin{enumerate}
+		\item $Z(0) = 0$
+		\item For any $0 < t_1 < t_2 < \ldots < t_k < \infty$, $Z(t_2) - Z(t_1), \ldots, Z(t_k) - Z(t_{k-1})$ are independent.
+		\item For any $s < t$, $Z(t) - Z(s) =_d Z(t-s)$
+		\item For any $\epsilon> 0$ and $t \in \bbR_{+}$, $\lim_{s \rightarrow t}P( |Z(t)-Z(s) > \epsilon|) = 0$
+	\end{enumerate}
+
+Given the correspondence between the random CDF and a Levy process, we can find a function of a Levy process, $Z$, such that the random distribution $F$ satisfies the NTL properties. The need to express $F$ as a function of $Z$ is motivated by the fact that working with a Levy process simplifies some derivations. In Theorem 1 we define $F$ as a function of a Levy process for NTL process, the analogous of Theorem 1 for NTR processes can be found in \cite{doksum1974tailfree}.
+
+\paragraph{Theorem 1} $F_{t_k}(t)$ is a random distribution function neutral-to-the-left if and only if it has the same probability distribution as
+\begin{equation}\label{NTL_eq}
+\exp(Z(t) - Z(t_k)), \quad t \in (0, t_k]
+\end{equation}
+for some Levy process $Z$.
+
+\textit{Proof:} We start by proving that by writing $F_{t_k}$ as in \Cref{NTL_eq} we obtain independent increments. For any increment $I[t_{j-1}, t_j]$ of a NTL process,
+\begin{equation*}
+\begin{split}
+\frac{F_{t_k}(t_j) - F_{t_k}(t_{j-1})}{F(t_j)} = 1 - \frac{F_{t_k}(t_{j-1})}{F_{t_k}(t_j)} = 1 - \exp\left(-(Z(t_j) - Z(t_{j-1}))\right)
+\end{split}
+\end{equation*}
+since increments of a Levy process are independent, it follows that increments of a NTL generated by \Cref{NTL_eq} are independent. 
+
+We now show that the process, $Z(t)$, following from the definition of $F$ has independent increments, hence proving it is a Levy process. We first write a general expression for $F_{t_k}(t_j)$ derived from \Cref{increments_NTL_F}. First note that
+\begin{equation*}
+\begin{split}
+&\frac{F_{t_k}(t_k) - F_{t_k}(t_{k-1})}{F_{t_k}(t_{k})} = V_k \implies F_{t_k}(t_{k-1}) = (1-V_k)
+\end{split}
+\end{equation*} 
+recursively we obtain
+\begin{equation}\label{NTL_F}
+F_{t_k}(t_j) = \prod_{i=j+1}^k (1 - V_i)
+\end{equation}
+
+The increments of the stochastic process $Z(t)$ can be written as 
+\begin{equation*}
+\begin{split}
+Z(t_j) - Z(t_{j-1}) &= \log(F_{t_k}(t_j)) - \log(F_{t_k}(t_{j-1}))  = \log\left(\frac{F_{t_k}(t_{j})}{F_{t_k}(t_{j-1})}\right) \\ &= \log\left(\frac{\prod_{i=2}^{j-1} (1 - V_i)}{\prod_{i=2}^{j} (1 - V_i)}\right) = -\log(1 - V_j)
+\end{split}
+\end{equation*}
+hence showing that the increment at time $t_j$ only depends on a function of $V_j$ and since $V_i$ for $i=1, \ldots, k$ are independent, the increments of $Z(t)$ are independent. This shows that $Z(t)$ is a Levy process. $\qed$
+
+Note that it is important to define $F$ on a specific interval to ensure it represents a proper CDF. However, a fixed time interval is by no mean restrictive and the results derived in the following hold for any time interval. In fact, the random CDF in \Cref{NTL_eq} can be normalized to any interval as
+\begin{equation*}
+F_{t_k}(t) = \frac{F_{t_{k-1}}}{\exp(Z(t_k) - Z(t_{k-1}))} \quad t \in (0, t_k]
+\end{equation*}
+
+The definition of $F$ is therefore valid for any time interval. Hence, to simplify notation in the rest of the analysis we omit the subscript of $F$ unless necessary.
+
+\subsection{Cumulative birth measure}\label{CBM}
+
+For the analysis of NTR processes \cite{james2006poisson} defines the cumulative hazard measure $\Lambda$, which directly relates to the NTR increments, and bases his analysis on this object, similarly to \cite{hjort1990nonparametric}. In order to analyse NTL processes we define the cumulative birth measure 
+\begin{equation}\label{birth_measure}
+B(ds) = F_{t_k}(ds)/F_{t_k}(s+), \quad s \in \bbR_+
+\end{equation}
+where $ds = s+ - s-$ and $F_{t_k}(s+) = P(T \leq s+)$ with $T \in \bbR_+$. $B$ is a completely random measure. Interestingly, defining the cumulative birth measure as in \Cref{birth_measure} lets us relate random jumps in the Levy process $Z$ to random jumps in $B$ in exactly the same way as done in \cite{james2006poisson} for $Z$ and $\Lambda$. A random jump $J_j$ in $B$ taking values in $[0,1]$ corresponds to a random jump $-\log(1 - J_j)$ in $Z$ taking values in $\bbR_+$ (\textbf{Note to self: Include proof in final version. Equate B to J}).
+
+Furthermore, we can write
+\begin{equation*}
+P(T \in ds | F_{t_k}) = F_{tk}(ds) = B(ds)F_{t_k}(s+) = B(ds)\exp(Z(s+) - Z(t_k))
+\end{equation*}
+
+\subsection{Spatial neutral to the left process}\label{SPNTL_process}
+
+\subsection{Posterior analysis}\label{SPNTL_posterior}
+
+
+present the 
 Lastly, to address the issues above, \cite{james2006poisson} used results from Poisson partition calculus \cite{james2005poisson}. Although the results from Poisson calculus come from a previous work \cite{james2005poisson}, the approach greatly simplified proofs and allows for a relatively simple generalization of NTR processes. Approaches used in literature prior to this work derived sampling distributions for Dirichlet processes using combinatorial arguments \cite{antoniak1974mixtures,pitman2002combinatorial}. Adopting a similar strategy in generalizing NTR processes would result challenging and would likely not be viable. 
 
 goes beyond deriving a posterior characterization for the SPNTR. In fact, James' work was motivated by a different observation and  
