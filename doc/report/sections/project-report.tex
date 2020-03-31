@@ -96,7 +96,7 @@ Note that it is important to define $F$ on a specific interval to ensure it repr
 F_{t_k}(t) = \frac{F_{t_{k-1}}}{\exp(Z(t_k) - Z(t_{k-1}))} \quad t \in (0, t_k]
 \end{equation*}
 
-The definition of $F$ is therefore valid for any time interval. Hence, to simplify notation in the rest of the analysis we omit the subscript of $F$ unless necessary.
+The definition of $F$ represents a stochastic process on $\bbR_{+} \times \borel(\bbR_{+})$ and is valid for any time interval. Hence, to simplify notation in the rest of the analysis we omit the subscript of $F$ unless necessary.
 
 \subsection{Cumulative birth measure}\label{CBM}
 To analyse NTR processes \cite{james2006poisson} uses the approach of \cite{hjort1990nonparametric} and works with the cumulative hazard measure $\Lambda$, a completely random measure that directly relates to the NTR increments. For NTL processes we define a similar object and name it cumulative birth measure 
@@ -113,23 +113,33 @@ where $ds = (s+) - (s-)$ and $F_{t_k}(s+) = P(T \leq s+)$ with $T$ a random vari
 B(dj) = \frac{F(dj)}{F(t_j)} = 1 - \exp(-(Z(t_j) - Z(t_{j-1}))) = J_j \implies Z(t_j) - Z(t_{j-1}) = -\log(1- J_j) \qed
 \end{split}
 \end{equation*}
-Using the cumulative birth measure, we can write
+Using the cumulative birth measure we can write
 \begin{equation*}
 P(T \in ds | F) = F(ds) = B(ds)F(s+) = B(ds)\exp(Z(s+) - Z(t_k))
 \end{equation*}
 
 \subsection{Spatial neutral to the left process}\label{SPNTL_process}
+The previous sections provided the background necessary to define the SPNTL process. Since our work extends \cite{james2006poisson}, we borrowed James' approach and notation in several parts. 
+
+The SPNTL process is motivated by the observation that the NTL process does not allow inference on spaces more complex than the real line however, complex spaces often appear in practice. In order to work with more complex spaces, we extend the space on which the random distribution $F$ is defined to an arbitrary Polish space $\calS = \bbR_{+} \times \borel(\bbR_{+}) \times \calX$ with $\calX$ an arbitrary Polish space. We denote by $(R, T, X)$ the elements of the Polish space $\calS$ that have distribution $F_r(ds, dx)$ for $(r, s, x) \in \cal{S}$. The extension to the Polish space $\calS$ is such that $F_r(ds, \calX)$ is a NTL process. To avoid carrying over the subscript in $F$, in the rest of the analysis we assume $r$ fixed and deal only with $(s, x) \in \calS_{-r}$.
+
+In his analysis of SPNTR \cite{james2006poisson} used results from Poisson partition calculus. This, significantly simplified proofs as combinatorial arguments, a common but challenging approach for similar proofs (see e.g. \cite{antoniak1974mixtures,pitman2002combinatorial}), could be avoided. To apply Poisson calculus for SPNTL processes, we extend $Z$ and $B$ to completely random measures on $\calS_{-r}$ using a representation in terms of a Poisson random measure, similarly to \cite{james2006poisson}. Let $N$ denote a Poisson random measure on the Polish space $\calW = [0,1] \times \calS_{-r}$ with mean intensity 
+\begin{equation*}
+E[N(du, ds, dx) | \nu] = \nu(du, ds, dx) = \rho(du | s)B_0(ds, dx)
+\end{equation*}
+where $\rho$ is a Levy density that determines the conditional distribution of the jumps of $B$ and $Z$ satisfying $\int_0^1 u \rho(du) = 1$ as in \cite{james2006poisson} and $B_0(ds, dx) = F_0(ds, dx)/F_0(s+)$ is the birth measure on $\calS_{-r}$ with $F_0$ denoting a prior on $F$ in $\calS_{-r}$ and $F_0(s+) = F_0(s+, \calX)$.
+
+Moreover, we denote the law of $N$ with intensity $\nu$ as $P(dN|\nu)$ and the Laplace functional of $N$ as
+\begin{equation*}
+E\left[e^{-N(f)}|\nu\right] = \int_{\bbM} e^{-N(f)}P(dN|\nu) = e^{-\calG(f)}
+\end{equation*}
+where for any positive $f$, $N(f) = \int_{\calW} f(x)N(dx)$ and $\calG(f) =\int_{\calW}(1-e^{-f(x)})\nu(dx)$ and $\bbM$ is the space of boundedly finite measures on $\cal{W}$. The definitions above are the same as those in \cite{james2006poisson}, however, we presented them here since they will be necessary for the rest of the analysis.
+
+From the specifications above we have that $B(ds, dx) = \int_0^1 uN(du,ds,dx)$ is a completely random measure on $\calS_{-r}$ with $E\left[B(ds, dx)\right] = B_0(ds,dx)$ and the corresponding for the Levy process $Z$, $Z(ds, dx) = \int_0^1 [-\log(1-u)]N(du,ds,dx)$. Furthermore, we define $Z(t+) = \int_{\calW}[-\indicator(s < t)\log(1-u)]N(du,ds,dx)$. Using these definitions we can specify a SPNTL random probability measure on $\calS_{-r}$ as 
+\begin{equation}
+P(T \in dt, X \in dx | F) = F(dt, dx) = F(t+)B(dt, dx)  
+\end{equation}
+and $E\left[F(dt, dx)\right] = F_0(dt, dx)$.
+
 
 \subsection{Posterior analysis}\label{SPNTL_posterior}
-
-
-present the 
-Lastly, to address the issues above, \cite{james2006poisson} used results from Poisson partition calculus \cite{james2005poisson}. Although the results from Poisson calculus come from a previous work \cite{james2005poisson}, the approach greatly simplified proofs and allows for a relatively simple generalization of NTR processes. Approaches used in literature prior to this work derived sampling distributions for Dirichlet processes using combinatorial arguments \cite{antoniak1974mixtures,pitman2002combinatorial}. Adopting a similar strategy in generalizing NTR processes would result challenging and would likely not be viable. 
-
-goes beyond deriving a posterior characterization for the SPNTR. In fact, James' work was motivated by a different observation and  
-
-
-Since numerous contributions were made by \cite{james2006poisson}
-
-Neutral-to-the-right (NTR) stochastic processes \cite{doksum1974tailfree} were introduced as priors for Bayesian nonparametrics models of right censored data (e.g survival analysis). In Bayesian statistics, using priors specifically designed for the problem at hand is renowned to be beneficial for effective inference. Hence, having the possibility to improve the descriptiveness of models for right censored data using NTR priors should be seen as a great advantage. 
-
