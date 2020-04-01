@@ -7,7 +7,7 @@
 In this section we follow the analysis of \cite{james2006poisson} to derive a posterior distribution for the SPNTL process. In \Cref{NTL_definition} we give a rigorous definition of a NTL process and derive a formula of the random distribution function in terms of a stochastic process, similarly to Thm. 3.1 of \cite{doksum1974tailfree}. \Cref{CBM} introduces the cumulative birth measure, the random measure we will use to specify a SPNTL process. \Cref{SPNTL_process} outlines the SPNTL process and in \Cref{SPNTL_posterior} we detail the posterior analysis and derive the main result of the paper using results from Poisson partition calculus \cite{james2005poisson,james2006poisson}.
 
 \subsection{Neutral to the left stochastic process}\label{NTL_definition}
-The Bayesian analysis of SPNTL is based on NTL stochastic processes. \cite{doksum1974tailfree} provides a framework to analyse NTR processes and characterize the random distribution function in terms of a Levy process. The NTR characterization, as well as the relation between the random distribution function and a Levy process is essential to obtain the results in \cite{james2006poisson}. Therefore, we give here a similar characterization for NTL processes as this will aid the posterior analysis of SPNTL.
+The Bayesian analysis of SPNTL is based on NTL stochastic processes. \cite{doksum1974tailfree} provides a framework to analyse NTR processes and characterize the random distribution function in terms of a L{\'e}vy process. The NTR characterization, as well as the relation between the random distribution function and a L{\'e}vy process is essential to obtain the results in \cite{james2006poisson}. Therefore, we give here a similar characterization for NTL processes as this will aid the posterior analysis of SPNTL.
 
 Given a sequence of random variables $X = (X_1, \ldots, X_k)$, we say that $X$ is NTL if the increments form a sequence, $R$, of mutually independent random variables in $[0, 1]$ \cite{bloem2018sampling}, that is
 
@@ -46,9 +46,9 @@ The increments in \Cref{increments_v} can be rewritten in terms of the stochasti
 \begin{equation}\label{increments_NTL_F}
 \left(\frac{F(t_1)}{F(t_1)}, \frac{F(t_2) - F(t_1)}{F(t_2)}, \ldots, \frac{F(t_k) - F(t_{k-1})}{F(t_{k})} \right) =_d \left(1, V_2, \ldots, V_k\right)
 \end{equation}
-for $0 < t_1 < t_2 < \ldots < t_k < \infty$. The random distribution $F$ is essentially a random cumulative density function (CDF) and its stochastic process corresponds to a special type of Levy process called \textit{subordinator} \cite{orbanz2012lecture}. 
+for $0 < t_1 < t_2 < \ldots < t_k < \infty$. The random distribution $F$ is essentially a random cumulative density function (CDF) and its stochastic process corresponds to a special type of L{\'e}vy process called \textit{subordinator} \cite{orbanz2012lecture}. 
 
-\paragraph{Levy process} \cite{papapantoleon2008introduction} A stochastic process $Z = \{Z(t) : t \in \bbR_+\}$ is said to be a Levy process if it satisfies the following properties:
+\paragraph{L{\'e}vy process} \cite{papapantoleon2008introduction} A stochastic process $Z = \{Z(t) : t \in \bbR_+\}$ is said to be a L{\'e}vy process if it satisfies the following properties:
 	\begin{enumerate}
 		\item $Z(0) = 0$
 		\item For any $0 < t_1 < t_2 < \ldots < t_k < \infty$, $Z(t_2) - Z(t_1), \ldots, Z(t_k) - Z(t_{k-1})$ are independent.
@@ -56,13 +56,13 @@ for $0 < t_1 < t_2 < \ldots < t_k < \infty$. The random distribution $F$ is esse
 		\item For any $\epsilon> 0$ and $t \in \bbR_{+}$, $\lim_{s \rightarrow t}P( |Z(t)-Z(s) > \epsilon|) = 0$
 	\end{enumerate}
 
-Given the correspondence between the random CDF and a Levy process, we can find a function of a Levy process, $Z$, such that the random distribution $F$ satisfies the NTL properties. The need to express $F$ as a function of $Z$ is motivated by the fact that working with a Levy process simplifies some derivations. In Theorem 1 we define $F$ as a function of a Levy process for NTL process, the analogous of Theorem 1 for NTR processes can be found in \cite{doksum1974tailfree}.
+Given the correspondence between the random CDF and a L{\'e}vy process, we can find a function of a L{\'e}vy process, $Z$, such that the random distribution $F$ satisfies the NTL properties. The need to express $F$ as a function of $Z$ is motivated by the fact that working with a L{\'e}vy process simplifies some derivations. In Theorem 1 we define $F$ as a function of a L{\'e}vy process for NTL process, the analogous of Theorem 1 for NTR processes can be found in \cite{doksum1974tailfree}.
 
 \paragraph{Theorem 1} $F_{t_k}(t)$ is a random distribution function neutral-to-the-left if and only if it has the same probability distribution as
 \begin{equation}\label{NTL_eq}
 e^{Z(t) - Z(t_k)}, \quad t \in (0, t_k]
 \end{equation}
-for some Levy process $Z$.
+for some L{\'e}vy process $Z$.
 
 \textit{Proof:} We start by proving that by writing $F_{t_k}$ as in \Cref{NTL_eq} we obtain independent increments. For any increment $I[t_{j-1}, t_j]$ of a NTL process,
 \begin{equation}\label{jump_equation}
@@ -70,9 +70,9 @@ for some Levy process $Z$.
 \frac{F_{t_k}(t_j) - F_{t_k}(t_{j-1})}{F(t_j)} = 1 - \frac{F_{t_k}(t_{j-1})}{F_{t_k}(t_j)} = 1 - e^{Z(t_{j-1}) -Z(t_j)}
 \end{split}
 \end{equation}
-since increments of a Levy process are independent, it follows that increments of a NTL generated by \Cref{NTL_eq} are independent. 
+since increments of a L{\'e}vy process are independent, it follows that increments of a NTL generated by \Cref{NTL_eq} are independent. 
 
-We now show that the process, $Z(t)$, following from the definition of $F$ has independent increments, hence proving it is a Levy process. We first write a general expression for $F_{t_k}(t_j)$ derived from \Cref{increments_NTL_F}. First note that
+We now show that the process, $Z(t)$, following from the definition of $F$ has independent increments, hence proving it is a L{\'e}vy process. We first write a general expression for $F_{t_k}(t_j)$ derived from \Cref{increments_NTL_F}. First note that
 \begin{equation*}
 \begin{split}
 &\frac{F_{t_k}(t_k) - F_{t_k}(t_{k-1})}{F_{t_k}(t_{k})} = V_k \implies F_{t_k}(t_{k-1}) = (1-V_k)
@@ -88,7 +88,7 @@ The increments of the stochastic process $Z(t)$ can be written as
 Z(t_j) - Z(t_{j-1}) &= \log(F_{t_k}(t_j)) - \log(F_{t_k}(t_{j-1}))  = \log\left(\frac{F_{t_k}(t_{j})}{F_{t_k}(t_{j-1})}\right) \\ &= \log\left(\frac{\prod_{i=2}^{j-1} (1 - V_i)}{\prod_{i=2}^{j} (1 - V_i)}\right) = -\log(1 - V_j)
 \end{split}
 \end{equation*}
-hence showing that the increment at time $t_j$ only depends on a function of $V_j$ and since $V_i$ for $i=1, \ldots, k$ are independent, the increments of $Z(t)$ are independent. This shows that $Z(t)$ is a Levy process. $\qed$
+hence showing that the increment at time $t_j$ only depends on a function of $V_j$ and since $V_i$ for $i=1, \ldots, k$ are independent, the increments of $Z(t)$ are independent. This shows that $Z(t)$ is a L{\'e}vy process. $\qed$
 
 Note that it is important to define $F$ on a specific interval to ensure it represents a proper CDF. However, a fixed time interval is by no mean restrictive and the results derived in the following hold for any time interval. In fact, the random CDF in \Cref{NTL_eq} can be normalized to any interval as
 \begin{equation*}
@@ -105,7 +105,7 @@ where $ds = (s+) - (s-)$ and $F_{t_k}(s+) = P(T \leq s+)$ with $T$ a random vari
 \begin{equation*}
 P(T \in ds | F) = F(ds) = B(ds)F(s+) = B(ds)e^{Z(s+) - Z(t_k)}
 \end{equation*}
-Defining the cumulative birth measure as in \Cref{birth_measure} lets us relate random jumps in the Levy process $Z$ to random jumps in $B$ in exactly the same way as done in \cite{james2006poisson} for $Z$ and $\Lambda$. 
+Defining the cumulative birth measure as in \Cref{birth_measure} lets us relate random jumps in the L{\'e}vy process $Z$ to random jumps in $B$ in exactly the same way as done in \cite{james2006poisson} for $Z$ and $\Lambda$. 
 
 \paragraph{Proposition 1} A random jump $J_j$ in $B$ taking values in $[0,1]$ corresponds to a random jump $-\log(1 - J_j)$ in $Z$ taking values in $\bbR_+$.
 
@@ -141,7 +141,7 @@ E\left[e^{-N(f)}|\nu\right] = \int_{\bbM} e^{-N(f)}P(dN|\nu) = e^{-\calG(f)}
 \end{equation*}
 where for any positive $f$, $N(f) = \int_{\calW} f(x)N(dx)$ and $\calG(f) =\int_{\calW}(1-e^{-f(x)})\nu(dx)$ and $\bbM$ is the space of boundedly finite measures on $\cal{W}$. The definitions above are the same as those in \cite{james2006poisson}, however, we presented them here since they will be necessary for the rest of the analysis.
 
-From the specifications above we have that $B(ds, dx) = \int_0^1 uN(du,ds,dx)$ is a completely random measure on $\calS_{-r}$ with $E\left[B(ds, dx)\right] = B_0(ds,dx)$ and the corresponding for the Levy process $Z$, $Z(ds, dx) = \int_0^1 [-\log(1-u)]N(du,ds,dx)$. Furthermore, we define $Z(t+) = \int_{\calW}[-\indicator(s < t)\log(1-u)]N(du,ds,dx)$. Using these definitions we can specify a SPNTL random probability measure on $\calS_{-r}$ as 
+From the specifications above we have that $B(ds, dx) = \int_0^1 uN(du,ds,dx)$ is a completely random measure on $\calS_{-r}$ with $E\left[B(ds, dx)\right] = B_0(ds,dx)$ and the corresponding for the L{\'e}vy process $Z$, $Z(ds, dx) = \int_0^1 [-\log(1-u)]N(du,ds,dx)$. Furthermore, we define $Z(t+) = \int_{\calW}[-\indicator(s < t)\log(1-u)]N(du,ds,dx)$. Using these definitions we can specify a SPNTL random probability measure on $\calS_{-r}$ as 
 \begin{equation*}
 P(T \in dt, X \in dx | F) = F(dt, dx) = F(t+)B(dt, dx)  
 \end{equation*}
