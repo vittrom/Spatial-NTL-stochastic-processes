@@ -82,7 +82,6 @@ recursively we obtain
 \begin{equation}\label{NTL_F}
 F_{t_k}(t_j) = \prod_{i=j+1}^k (1 - V_i)
 \end{equation}
-
 The increments of the stochastic process $Z(t)$ can be written as 
 \begin{equation*}
 \begin{split}
@@ -95,7 +94,6 @@ Note that it is important to define $F$ on a specific interval to ensure it repr
 \begin{equation*}
 F_{t_k}(t) = \frac{F_{t_{k-1}}}{e^{Z(t_k) - Z(t_{k-1})}} \quad t \in (0, t_k]
 \end{equation*}
-
 The definition of $F$ represents a stochastic process on $\bbR_{+} \times \borel(\bbR_{+})$ and is valid for any time interval. Hence, to simplify notation in the rest of the analysis we omit the subscript of $F$ unless necessary.
 
 \subsection{Cumulative birth measure}\label{CBM}
@@ -186,9 +184,7 @@ To use the result above, we need to be able to write the distribution of $(\bold
 \begin{equation}\label{product_f}
 \prod_{i=1}^n F\left(T_i + \right) = \prod_{j=1}^{n(\boldsymbol{p})} F\left(T_{(j:n)} + \right)^{m_j} = e^{-nZ(T_{(1:n)})} \prod_{j=1}^{n(\boldsymbol{p})} e^{m_j Z(T_{(j:n)})}
 \end{equation}
-of \Cref{joint_dist} where the time subscript of $F$ corresponds to $T_{(1:n)}$ as this is the most recent time in the sequence. Note that only the product in \Cref{product_f} needs to be rewritted as $B(dt, dx)$ is, by definition, a function of $N$. 
-
-Our goal is to find a nonnegative function $f$ such that \Cref{product_f} can be expressed as $e^{-N(f)}$.
+of \Cref{joint_dist} where the time subscript of $F$ corresponds to $T_{(1:n)}$ as this is the most recent time in the sequence. Note that only the product in \Cref{product_f} needs to be rewritted as $B(dt, dx)$ is, by definition, a function of $N$. Our goal is to find a nonnegative function $f$ such that \Cref{product_f} can be expressed as $e^{-N(f)}$.
 
 Let $g_{T_{(j:n)}}(u,s,x) = \indicator\left(s < T_{(j:n)}\right)[-\log(1-u)]$ and define 
 \begin{equation*}
@@ -205,7 +201,6 @@ with
 \begin{equation*}
 f_n(u,s,x) = ng_{T_{(1:n)}}(u,s,x) - g_n(u,s,x) = [-\log(1-u)]\left[Y_n(s) - n\indicator\left(s > T_{(1:n)}\right)\right] \geq 0.
 \end{equation*}
-
 The function $f$ allows to rewrite the product in \Cref{product_f} as a function of the Poisson random measure $N$  with mean intensity
 
 \begin{equation*}
@@ -226,7 +221,6 @@ with
 \begin{equation*}
 \kappa_{m_j, r_j}\left(\rho |T_{(j:n)}\right)=\int_0^1 J_{j,n}^{m_j}\left(1- J_{j,n}\right)^{r_j} \rho\left(dJ_{j,n}|T_{(j:n)}\right)
 \end{equation*}
-
 Moreover, we can characterize the posterior of a SPNTL process similarly to Proposition 4.1 in \cite{james2006poisson}.
 
 \paragraph{Theorem 2} Let $F$ be a SPNTL process defined by the Poisson random measure $N$ with mean intensity $\nu(du, ds, dx) = \rho(du | s)B_0(ds, dx)$ and $B$ its corresponding cumulative birth measure. Moreover, let $(T_i, X_i)|F$ be i.i.d. from $F$ for $i = 1, \ldots, n$. Then:
