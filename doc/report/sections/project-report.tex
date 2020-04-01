@@ -4,7 +4,7 @@
 
 \section{Project report}\label{project_report}
 
-In this section we follow the analysis of \cite{james2006poisson} to derive a posterior distribution for the SPNTL process. In \Cref{NTL_definition} we give a rigorous definition of a NTL process and derive a formula of the random distribution function in terms of a stochastic process, similarly to Thm. 3.1 of \cite{doksum1974tailfree}. \Cref{CBM} introduces the cumulative birth measure, the random measure we will use to specify a SPNTL process. \Cref{SPNTL_process} outlines the SPNTL process and in \Cref{SPNTL_posterior} we detail the posterior analysis and derive the main result of the paper using results from Poisson partition calculus \cite{james2005poisson,james2006poisson}.
+In this section we follow the analysis of \cite{james2006poisson} to derive a posterior distribution for the SPNTL process. In \Cref{NTL_definition} we give a rigorous definition of a NTL process and derive a formula of the random distribution function in terms of a stochastic process, similarly to Thm. 3.1 of \cite{doksum1974tailfree}. \Cref{CBM} introduces the cumulative birth measure, the random measure we will use to specify a SPNTL process. \Cref{SPNTL_process} outlines the SPNTL process and in \Cref{SPNTL_posterior} we detail the posterior analysis and derive the main result of the paper using results from Poisson partition calculus \cite{james2005poisson,james2006poisson}. \Cref{conclusion} concludes the paper.
 
 \subsection{Neutral to the left stochastic process}\label{NTL_definition}
 The Bayesian analysis of SPNTL is based on NTL stochastic processes. \cite{doksum1974tailfree} provides a framework to analyse NTR processes and characterize the random distribution function in terms of a L{\'e}vy process. The NTR characterization, as well as the relation between the random distribution function and a L{\'e}vy process is essential to obtain the results in \cite{james2006poisson}. Therefore, we give here a similar characterization for NTL processes as this will aid the posterior analysis of SPNTL.
@@ -252,3 +252,6 @@ Moreover, we can characterize the posterior of a SPNTL process similarly to Prop
 	\end{equation*}
 	where $\tilde{P}_{j,n} = e^{Z_n(T_{(j:n)}+) - Z_n\left(T_{(1:n)}\right)} J_{j,n}\prod_{l=j+1}^{n(\boldsymbol{p})}(1- J_{l,n})$.
 \end{enumerate}
+
+\subsubsection{Conclusion}\label{conclusion}
+In this report we introduced the spatial neutral-to-the-left stochastic process and derived a posterior characterization following the work of \cite{james2006poisson}. Such characterization allows to use SPNTL as prior for NTL processes in Bayesian nonparametrics. However, for practical applications a sampling scheme for SPNTL should be derived first. Future work could address the research ideas discussed in \Cref{proposals} and extend the understanding of NTL processes both theoretically and practically.
